@@ -1,5 +1,16 @@
     /* The C function */
-    int kmain(int arg1, int arg2, int arg3)
+
+   #include "drivers/frame_buffer.h"
+   #include "drivers/serial_port.h"
+
+    void kmain()
     {
-        return arg1 + arg2 + arg3;
+        char buff[]="!!!Successfully loaded!!!";
+	    fb_write(buff,sizeof(buff));
+	
+	serial_configure(SERIAL_COM1_BASE, Baud_115200);
+	serial_write(SERIAL_COM1_BASE, buff, sizeof(buff));
+	
+
     }
+
